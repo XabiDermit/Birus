@@ -67,7 +67,7 @@ public class HasieraLeihoaKud implements Initializable {
             if( !tfJugador1.getText().equals("") && !tfJugador2.getText().equals("")){
                 nombres.add(tfJugador1.getText());
                 nombres.add(tfJugador2.getText());
-                return nombres;
+                mainApp.mainErakutsi(nombres);
             }else{
                 lblError.setVisible(true);
             }
@@ -76,7 +76,7 @@ public class HasieraLeihoaKud implements Initializable {
                 nombres.add(tfJugador1.getText());
                 nombres.add(tfJugador2.getText());
                 nombres.add(tfJugador3.getText());
-                return nombres;
+                mainApp.mainErakutsi(nombres);
             }else{
                 lblError.setVisible(true);
             }
@@ -87,7 +87,7 @@ public class HasieraLeihoaKud implements Initializable {
                 nombres.add(tfJugador2.getText());
                 nombres.add(tfJugador3.getText());
                 nombres.add(tfJugador4.getText());
-                return nombres;
+                mainApp.mainErakutsi(nombres);
             }else{
                 lblError.setVisible(true);
             }
@@ -100,7 +100,7 @@ public class HasieraLeihoaKud implements Initializable {
                 nombres.add(tfJugador3.getText());
                 nombres.add(tfJugador4.getText());
                 nombres.add(tfJugador5.getText());
-                return nombres;
+                mainApp.mainErakutsi(nombres);
             }else{
                 lblError.setVisible(true);
             }
@@ -113,7 +113,7 @@ public class HasieraLeihoaKud implements Initializable {
                 nombres.add(tfJugador4.getText());
                 nombres.add(tfJugador5.getText());
                 nombres.add(tfJugador6.getText());
-                return nombres;
+                mainApp.mainErakutsi(nombres);
             }else{
                 lblError.setVisible(true);
             }
