@@ -1,10 +1,12 @@
 package Birus.model;
 
+import javafx.scene.image.Image;
+
 public class Tratamendua extends Karta {
 	private String mota;
 	
-	public Tratamendua(String pKolorea,String pMota) {
-		super(pKolorea);
+	public Tratamendua(String pKolorea, String pMota, Image pKarta) {
+		super(pKolorea,pKarta);
 		this.mota=pMota;
 	}
 	public void inprimatu() {

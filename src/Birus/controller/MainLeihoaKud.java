@@ -1,6 +1,10 @@
 package Birus.controller;
 
 import Birus.Main;
+import Birus.model.Jokalaria;
+import Birus.model.ListaJokalariak;
+import Birus.model.ListaKartak;
+import Birus.model.Tableroa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -92,6 +96,10 @@ public class MainLeihoaKud implements Initializable {
 
     //atributos
     private Main mainApp;
+    private Jokalaria [] listajugadores;
+    private Tableroa tablero;
+    private ArrayList<String> nombres;
+    private int turno;
 
 
     @Override
@@ -100,8 +108,10 @@ public class MainLeihoaKud implements Initializable {
 
     }
 
-    public void setPestañas(ArrayList<String> pNombres){
+    //pone el nombre de cada jugardor en el tab
+    private void setPestañas(ArrayList<String> pNombres){
         int aux = pNombres.size();
+        nombres = pNombres;
         if (aux==2){
             tabJugador1.setText(pNombres.get(0));
             tabJugadores.getTabs().add(tabJugador1);
@@ -157,13 +167,98 @@ public class MainLeihoaKud implements Initializable {
 
     @FXML
     public void onClickJugar(ActionEvent actionEvent) {
+        //jugamos la carta seleccionada
+        //hay que comprobar que tipo de carta es y ver que accion conlleva
+        //cuando se haga la accion se acaba el turno
+        cambiarTurno();
     }
 
     @FXML
     public void onClickDescartar(ActionEvent actionEvent) {
+        //descartamos la carta seleccionada, nos dan una nueva y pasa de turno automaticamenente
+        cambiarTurno();
     }
 
     @FXML
     public void onClickPasar(ActionEvent actionEvent) {
+        //pasamos de ronda y ya
+        cambiarTurno();
+
+    }
+
+    private void cambiarTurno(){
+        if (turno==1){
+            turno=2;
+            lblTurno.setText("");
+            lblTurno.setText("Mano de " + nombres.get(1));
+        }else if (turno==2){
+            if(3<= nombres.size()){
+                turno=3;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(2));
+            }else{
+                turno=1;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(0));
+            }
+
+        }else if (turno==3){
+            if(4<=nombres.size()) {
+                turno = 4;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(3));
+            }else{
+                turno=1;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(0));
+            }
+        }else if (turno==4){
+            if(5<=nombres.size()) {
+                turno = 5;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(4));
+            }else{
+                turno=1;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(0));
+            }
+        }else if (turno==5){
+            if (6<=nombres.size()) {
+                turno = 6;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(5));
+            }else{
+                turno=1;
+                lblTurno.setText("");
+                lblTurno.setText("Mano de " + nombres.get(0));
+            }
+        }else{
+            turno=1;
+            lblTurno.setText("");
+            lblTurno.setText("Mano de " + nombres.get(0));
+        }
+        actualizarMano();
+    }
+
+    private boolean comprobarPartida(){
+        return true;
+    }
+
+    private void actualizarMano(){
+        ivMano1.setImage(listajugadores[turno-1].getEskua().getKarta(0).getKarta());
+        ivMano2.setImage(listajugadores[turno-1].getEskua().getKarta(1).getKarta());
+        ivMano3.setImage(listajugadores[turno-1].getEskua().getKarta(2).getKarta());
+    }
+
+    public void empezarJuego(ArrayList<String> pNombres){
+        setPestañas(pNombres);                                      //pone los nombres a los tabs
+        this.listajugadores = ListaJokalariak.getNireListaJokalariak(pNombres.size()).getLista();//crea la lista de los jugadores
+        this.tablero = Tableroa.getNiretableroa();              //crea las cartas
+        tablero.kartakBanatu();                                 //ahora las reparte
+
+        //poner las 3 cartas del primer jugador en su mano
+        lblTurno.setText("Mano de " + pNombres.get(0));
+        turno= 1;
+        actualizarMano();
     }
 }

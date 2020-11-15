@@ -1,10 +1,12 @@
 package Birus.model;
 
+import javafx.scene.image.Image;
+
 public class Birusa extends Karta {
 	private boolean komodin;
 	
-	public Birusa (String pKolorea,boolean pKomodin) {
-		super(pKolorea);
+	public Birusa (String pKolorea, boolean pKomodin, Image pKarta) {
+		super(pKolorea, pKarta);
 		this.komodin=pKomodin;
 	}
 	public void inprimatu() {
