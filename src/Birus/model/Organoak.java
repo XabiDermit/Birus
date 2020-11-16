@@ -1,12 +1,16 @@
 package Birus.model;
 
+import javafx.scene.image.Image;
+
+import java.awt.*;
+
 public class Organoak extends Karta {
 	private boolean komodin;
 	private int bakunaKop;
 	private int birusKop;
 	
-	public Organoak (String pKolorea,boolean pKomodin,int pBakunaKop) {
-		super(pKolorea);
+	public Organoak (String pKolorea, boolean pKomodin, int pBakunaKop, Image pKarta) {
+		super(pKolorea, pKarta);
 		this.kolorea=pKolorea;
 		this.komodin=pKomodin;
 		this.bakunaKop=pBakunaKop;

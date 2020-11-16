@@ -56,9 +56,7 @@ public class Main extends Application {
         }
         stage.setScene(mainLeihoaScene);
         stage.show();
-        mainLeihoaKud.setPestañas(pNombres);
-        Exekutagarria.getNireExekutagarria().jugar(pNombres);
-
+        mainLeihoaKud.empezarJuego(pNombres);
     }
 
     public static void main(String[] args) {

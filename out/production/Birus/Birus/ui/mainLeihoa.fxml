@@ -159,19 +159,24 @@
                     </tabs></TabPane>
                 <HBox prefHeight="183.0" prefWidth="712.0">
                     <children>
+                      <Label fx:id="lblTurno" text="Label">
+                     <HBox.margin>
+                        <Insets left="20.0" top="100.0" />
+                     </HBox.margin>
+                  </Label>
                         <ImageView fx:id="ivMano1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                             <HBox.margin>
-                                <Insets left="30.0" />
+                                <Insets left="20.0" />
                             </HBox.margin>
                         </ImageView>
                         <ImageView fx:id="ivMano2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                             <HBox.margin>
-                                <Insets left="25.0" />
+                                <Insets left="20.0" />
                             </HBox.margin>
                         </ImageView>
                         <ImageView fx:id="ivMano3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                             <HBox.margin>
-                                <Insets left="25.0" />
+                                <Insets left="20.0" />
                             </HBox.margin>
                         </ImageView>
                     </children></HBox>
@@ -181,11 +186,7 @@
     <bottom>
         <HBox prefHeight="54.0" prefWidth="726.0" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="lblTurno" text="Label">
-               <HBox.margin>
-                  <Insets left="50.0" top="15.0" />
-               </HBox.margin></Label>
-            <Button fx:id="btnJugar" mnemonicParsing="false" onAction="#onClickJugar" prefHeight="25.0" prefWidth="87.0" text="Jugar Carta">
+            <Button fx:id="btnJugar" mnemonicParsing="false" onAction="#onClickJugar" prefHeight="26.0" prefWidth="101.0" text="Jugar Carta">
                <HBox.margin>
                   <Insets left="50.0" top="15.0" />
                </HBox.margin>
