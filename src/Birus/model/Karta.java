@@ -23,4 +23,12 @@ public abstract class Karta {
 	public Image getKarta() {
 		return karta;
 	}
+
+	public void setCarta(Image pCarta){
+		karta = pCarta;
+	}
+
+	public String getKolorea(){
+		return kolorea;
+	}
 }

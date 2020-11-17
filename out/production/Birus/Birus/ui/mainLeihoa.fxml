@@ -3,36 +3,45 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Birus.controller.MainLeihoaKud">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Birus.controller.MainLeihoaKud">
     <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="625.0" prefWidth="725.0" BorderPane.alignment="CENTER">
             <children>
-                <TabPane fx:id="tabJugadores" prefHeight="276.0" prefWidth="712.0" tabClosingPolicy="UNAVAILABLE">
+                <TabPane fx:id="tabJugadores" prefHeight="280.0" prefWidth="725.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                         <Tab fx:id="tabJugador1" text="Untitled Tab">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador1Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="5.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador1Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador1Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador1Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador1Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador1Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -45,18 +54,24 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador2Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador2Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador2Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador2Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador2Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador2Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets right="15.0" />
+                                                        <Insets left="7.0" right="15.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -68,18 +83,24 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador3Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador3Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador3Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador3Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador3Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador3Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets right="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -91,18 +112,24 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador4Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador4Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador4Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador4Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador4Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador4Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets right="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -114,18 +141,24 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador5Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador5Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador5Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador5Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador5Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador5Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets right="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -137,18 +170,24 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <HBox prefHeight="232.0" prefWidth="712.0">
+                                        <HBox prefHeight="232.0" prefWidth="750.0">
                                             <children>
                                                 <ImageView fx:id="ivJugador6Mesa1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets left="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
-                                                <ImageView fx:id="ivJugador6Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                                                <ImageView fx:id="ivJugador6Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="ivJugador6Mesa2" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
+                                                <ImageView fx:id="ivJugador6Mesa3" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="7.0" top="15.0" />
+                                       </HBox.margin></ImageView>
                                                 <ImageView fx:id="ivJugador6Mesa4" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                                     <HBox.margin>
-                                                        <Insets right="15.0" />
+                                                        <Insets left="7.0" top="15.0" />
                                                     </HBox.margin>
                                                 </ImageView>
                                             </children>
@@ -157,11 +196,11 @@
                             </content>
                         </Tab>
                     </tabs></TabPane>
-                <HBox prefHeight="183.0" prefWidth="712.0">
+                <HBox prefHeight="225.0" prefWidth="725.0">
                     <children>
-                      <Label fx:id="lblTurno" text="Label">
+                      <Label fx:id="lblTurno" prefHeight="16.0" prefWidth="91.0" text="Label">
                      <HBox.margin>
-                        <Insets left="20.0" top="100.0" />
+                        <Insets left="20.0" top="120.0" />
                      </HBox.margin>
                   </Label>
                         <ImageView fx:id="ivMano1" fitHeight="215.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
@@ -180,25 +219,73 @@
                             </HBox.margin>
                         </ImageView>
                     </children></HBox>
+            <HBox prefHeight="3.0" prefWidth="750.0">
+               <children>
+                  <RadioButton fx:id="rBtn1" mnemonicParsing="false" selected="true">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Cartas" />
+                     </toggleGroup>
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="rBtn2" mnemonicParsing="false" toggleGroup="$Cartas">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="rBtn3" mnemonicParsing="false" toggleGroup="$Cartas">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox prefHeight="39.0" prefWidth="725.0">
+               <children>
+                  <Label fx:id="lblMensaje" text="Label">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="69.0" prefWidth="725.0">
+                     <children>
+                        <TextField fx:id="tfMensaje">
+                           <HBox.margin>
+                              <Insets left="15.0" top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="btnSeleccionar" mnemonicParsing="false" onAction="#onClickSeleccionar" prefHeight="26.0" prefWidth="97.0" text="Usar">
+                           <HBox.margin>
+                              <Insets left="30.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             </children>
         </VBox>
     </center>
     <bottom>
-        <HBox prefHeight="54.0" prefWidth="726.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="74.0" prefWidth="750.0" BorderPane.alignment="CENTER">
             <children>
             <Button fx:id="btnJugar" mnemonicParsing="false" onAction="#onClickJugar" prefHeight="26.0" prefWidth="101.0" text="Jugar Carta">
                <HBox.margin>
-                  <Insets left="50.0" top="15.0" />
+                  <Insets left="115.0" top="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnDescartar" mnemonicParsing="false" onAction="#onClickDescartar" text="Descartar Carta">
                <HBox.margin>
-                  <Insets left="50.0" top="15.0" />
+                  <Insets left="80.0" top="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnPasar" mnemonicParsing="false" onAction="#onClickPasar" prefHeight="25.0" prefWidth="100.0" text="Pasar Turno">
                <HBox.margin>
-                  <Insets left="50.0" top="15.0" />
+                  <Insets left="90.0" top="15.0" />
                </HBox.margin>
             </Button>
             </children>

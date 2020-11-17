@@ -17,9 +17,12 @@ public class ListaKartak {
 		this.lista.add(pKarta);
 	}
 	
-	public Karta kartaKendu(int pPos) {
-		return this.lista.remove(pPos);
-		
+	public Karta kartaKendu(int pos) {
+		return this.lista.remove(pos);
+	}
+
+	public Karta repartirCarta(){
+		return this.lista.remove(0);
 	}
 	public ArrayList <Karta> getLista(){
 		return this.lista;
