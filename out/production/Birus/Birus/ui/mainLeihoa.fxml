@@ -219,7 +219,7 @@
                             </HBox.margin>
                         </ImageView>
                     </children></HBox>
-            <HBox prefHeight="3.0" prefWidth="750.0">
+            <HBox prefHeight="25.0" prefWidth="750.0">
                <children>
                   <RadioButton fx:id="rBtn1" mnemonicParsing="false" selected="true">
                      <toggleGroup>
@@ -244,7 +244,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </HBox>
-            <VBox prefHeight="39.0" prefWidth="725.0">
+            <VBox prefHeight="33.0" prefWidth="750.0">
                <children>
                   <Label fx:id="lblMensaje" text="Label">
                      <VBox.margin>

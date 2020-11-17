@@ -12,4 +12,8 @@ public class Tratamendua extends Karta {
 	public void inprimatu() {
 		System.out.println(this.mota);
 	}
+
+	public String getMota(){
+		return mota;
+	}
 }

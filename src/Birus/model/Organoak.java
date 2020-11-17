@@ -69,7 +69,7 @@ public class Organoak extends Karta {
 		}
 		if (tipoOrgano.equals("cerebroazul.png")) {
 			if (estado == 2) {
-				super.setCarta(new Image("/Birus/ui/Imagenes/test.jpeg"));
+				super.setCarta(new Image("/Birus/ui/Imagenes/cerebroazulsano.png"));
 			} else if (estado == 1) {
 				super.setCarta(new Image("/Birus/ui/Imagenes/cerebroazulplus.png"));
 			} else if (estado == 0) {
@@ -83,7 +83,7 @@ public class Organoak extends Karta {
 			}
 		}else if (tipoOrgano.equals("corazonrojo.png")) {
 			if (estado == 2) {
-				super.setCarta(new Image("/Birus/ui/Imagenes/test.jpeg"));
+				super.setCarta(new Image("/Birus/ui/Imagenes/corazonrojosano.png"));
 			} else if (estado == 1) {
 				super.setCarta(new Image("/Birus/ui/Imagenes/corazonrojoplus.png"));
 			} else if (estado == 0) {
@@ -97,7 +97,7 @@ public class Organoak extends Karta {
 			}
 		}else if (tipoOrgano.equals("estomagoverde.png")) {
 			if (estado == 2) {
-				super.setCarta(new Image("/Birus/ui/Imagenes/test.jpeg"));
+				super.setCarta(new Image("/Birus/ui/Imagenes/estomagoverdesano.png"));
 			} else if (estado == 1) {
 				super.setCarta(new Image("/Birus/ui/Imagenes/estomagoverdeplus.png"));
 			} else if (estado == 0) {
@@ -111,7 +111,7 @@ public class Organoak extends Karta {
 			}
 		}else if (tipoOrgano.equals("huesoamarillo.png")){
 			if (estado == 2){
-				super.setCarta(new Image("/Birus/ui/Imagenes/test.jpeg"));
+				super.setCarta(new Image("/Birus/ui/Imagenes/huesoamarillosano.png"));
 			}else if (estado == 1){
 				super.setCarta(new Image("/Birus/ui/Imagenes/huesoamarilloplus.png"));
 			}else if (estado == 0){
@@ -125,7 +125,7 @@ public class Organoak extends Karta {
 			}
 		}else{	//es el comodin
 			if (estado == 2){
-				super.setCarta(new Image("/Birus/ui/Imagenes/test.jpeg"));
+				super.setCarta(new Image("/Birus/ui/Imagenes/organocomodinsano.png"));
 			}else if (estado == 1){
 				super.setCarta(new Image("/Birus/ui/Imagenes/organocomodinplus.png"));
 			}else if (estado == 0){

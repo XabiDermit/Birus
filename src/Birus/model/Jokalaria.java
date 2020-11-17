@@ -103,14 +103,16 @@ public class Jokalaria {
 	
 
 	
-	public void organoaMahaianSartu(Organoak pOr) {
+	public boolean organoaMahaianSartu(Organoak pOr) {
 		
 		int i = bilatuLekua(); //recoge la posicion donde se mete el organo o un -1 en caso de que no puedas meterlo
 		if (i != -1) {
 			this.mahaia[i] = pOr;
+			return true;
 		}
 		else {
 			//mostrar ventana de mensaje
+			return false;
 		}
 	}
 	
@@ -134,7 +136,7 @@ public class Jokalaria {
 		boolean aurk = false;
 		Organoak k;
 		if (pBirusa.kolorea.equals("Guztiak")){
-			k = (Organoak)getCartaOptima(pBirusa,mesa);
+			k = (Organoak)getCartaOptima(mesa);
 			aurk=true;
 
 		}else{
@@ -196,7 +198,7 @@ public class Jokalaria {
 		}
 	}
 
-	private Karta getCartaOptima(Karta pCarta, Karta [] mesaEnemigo){
+	private Karta getCartaOptima(Karta[] mesaEnemigo){
 
 		//prioridad de ataque/defensa  --> si una carta esta apunto de blindarse >> si una carta esta apunto de morir >> estado = 0
 		ArrayList<Integer> estados = new ArrayList<>();
@@ -219,52 +221,102 @@ public class Jokalaria {
 	public void bilatuLekuaBotikarentzat(Botika pBo) {
 		int i = 0;
 		boolean aurk =  false;
+		Karta k;
+		if (pBo.kolorea.equals("Guztiak")){
+			k = getCartaOptima(mahaia);
+			aurk=true;
+		}else{
 			while (i < 4 && !aurk) {
-				if ((this.mahaia[i] != null) && ((this.mahaia[i].kolorea.equals(pBo.kolorea)) || pBo.kolorea.equals("Guztiak"))) {
+				if (this.mahaia[i] != null && this.mahaia[i].kolorea.equals(pBo.kolorea)) {
 					aurk = true;
 				}
 				else {
 					i++;
 				}
 			}
-			
-			if (aurk) {
-				Karta k = this.mahaia[i];
-				Organoak or = (Organoak)k;
-				if (or.getEstado() == 2) {
-					//organo ya blindado
-					//mostrar ventana de mensaje
-				}
-				else if (or.getEstado() == 1) {
-					or.bakunaKopHanditu();
-					or.actualizarEstadoCarta();
-					this.eskua.deskartatu(pBo);
-					this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
-				}
-				else if (or.getEstado() == -1) {
+			k = this.mahaia[i];
+		}
+		if (aurk) {
+			Organoak or = (Organoak)k;
+			if (or.getEstado() == 2) {
+				//organo ya blindado
+				//mostrar ventana de mensaje
+			}
+			else if (or.getEstado() == 1) {
+				or.bakunaKopHanditu();
+				or.actualizarEstadoCarta();
+				this.eskua.deskartatu(pBo);
+				this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
+			}
+			else if (or.getEstado() == -1) {
 
-					or.bakunaKopHanditu();
-					or.actualizarEstadoCarta();
-					this.eskua.deskartatu(pBo);
-					this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
-				}
-				else { //no tiene nada
-					or.bakunaKopHanditu();
-					or.actualizarEstadoCarta();
-					this.eskua.deskartatu(pBo);
-					this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
-				}
+				or.bakunaKopHanditu();
+				or.actualizarEstadoCarta();
+				this.eskua.deskartatu(pBo);
+				this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
 			}
-			else {
-				System.out.println("Oraindik ez daukazu kolore horretako organorik zure mahaian!!");
+			else { //no tiene nada
+				or.bakunaKopHanditu();
+				or.actualizarEstadoCarta();
+				this.eskua.deskartatu(pBo);
+				this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
 			}
+		}
+		else {
+			System.out.println("Oraindik ez daukazu kolore horretako organorik zure mahaian!!");
+		}
 	}
 	
 	public Karta[] getMahaia() {
 		return this.mahaia;
 	}
 	
+	public void tratamentuaJolastu(Tratamendua tratamendua, Jokalaria pJugador){
+		if (tratamendua.getMota().equals("Kutsatu")){
+			//pasar viruses al jugador elegido
+		}else if (tratamendua.getMota().equals("Lapurra")){
+			//robarle un organo a otro jugador
+			Karta[] pMesaJugador = pJugador.getMahaia();
+			ArrayList<Integer> betados = new ArrayList<>();
+			Organoak carta = getMejorOrgano(pMesaJugador,betados);
+			//mientra no se pueda meter un organo en la mesa pasa a buscar el siguiente mejor
+			for (int i=2; !organoaMahaianSartu(carta) && i>-2;i--){
+				betados.add(i);
+				carta = getMejorOrgano(pMesaJugador,betados);
+			}
+			pMesaJugador[getPosFromCarta(carta,pMesaJugador)] = null;
+		}else if (tratamendua.getMota().equals("Organo aldaketa")){
+			//intercambiar organo con otro jugador
+		}else if (tratamendua.getMota().equals("Deskartatu guztiak")){
+			//descartar mano del jugador elegido
+			pJugador.getEskua().cambiarTodaLaMano();
+		}else{ // Esku aldaketa
+			//cambia nuestra mano por la de otro
+			pJugador.getEskua().intercambiarMano(this.eskua);
+		}
+	}
 
+	private Organoak getMejorOrgano(Karta[] mesa, ArrayList<Integer> betados) {
+		ArrayList<Integer> estados = new ArrayList<>();
+		ArrayList<String> coloresMiMesa = new ArrayList<>();
+		for (int i=0; i<4;i++){
+			if (mesa[i] != null && mesa[i] instanceof Organoak){
+				estados.add(((Organoak) mesa[i]).getEstado());
+				coloresMiMesa.add(mahaia[i].getKolorea());
+			}
+
+		}
+		if (estados.contains(2) && !betados.contains(2) && !coloresMiMesa.contains(mesa[estados.indexOf(2)].getKolorea())){
+			return (Organoak) mesa[estados.indexOf(2)];
+		}else if (estados.contains(1) && !betados.contains(1) && !coloresMiMesa.contains(mesa[estados.indexOf(1)].getKolorea())){
+			return (Organoak) mesa[estados.indexOf(1)];
+		}else if (estados.contains(0) && !betados.contains(0)&& !coloresMiMesa.contains(mesa[estados.indexOf(0)].getKolorea())){
+			return (Organoak) mesa[estados.indexOf(0)];
+		}else if (estados.contains(-1) && !betados.contains(-1)&& !coloresMiMesa.contains(mesa[estados.indexOf(-1)].getKolorea())){
+			return (Organoak) mesa[estados.indexOf(-1)];
+		}
+		return null;
+	}
 	
 	public boolean koloreBerdinekoOrganoDago(Karta pOr) {
 		boolean ema = false;

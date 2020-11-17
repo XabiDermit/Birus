@@ -128,4 +128,29 @@ public class ListaKartak {
 		this.lista.remove(pKarta);
         Tableroa.getNiretableroa().getMazoa().kartaGehitu(pKarta);
     }
+
+    public void cambiarTodaLaMano(){
+		lista.clear();
+		for (int i=0;i<3;i++){
+			lista.add(Tableroa.getNiretableroa().getMazoa().repartirCarta());
+		}
+	}
+
+	public void intercambiarMano(ListaKartak cartasRival){
+		Karta cartaAux1 = cartasRival.getKarta(0);
+		Karta cartaAux2 = cartasRival.getKarta(1);
+		Karta cartaAux3 = cartasRival.getKarta(2);
+
+		cartasRival.getLista().clear();
+
+		cartasRival.getLista().add(this.lista.get(0));
+		cartasRival.getLista().add(this.lista.get(1));
+		cartasRival.getLista().add(this.lista.get(2));
+
+		this.lista.clear();
+
+		kartaGehitu(cartaAux1);
+		kartaGehitu(cartaAux2);
+		kartaGehitu(cartaAux3);
+	}
 }

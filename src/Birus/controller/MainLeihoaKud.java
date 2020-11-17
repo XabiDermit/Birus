@@ -102,6 +102,12 @@ public class MainLeihoaKud implements Initializable {
     @FXML
     private Button btnSeleccionar;
     @FXML
+    private Button btnJugar;
+    @FXML
+    private Button btnDescartar;
+    @FXML
+    private Button btnPasar;
+    @FXML
     private Label lblTurno;
 
     //atributos
@@ -211,8 +217,14 @@ public class MainLeihoaKud implements Initializable {
             lblMensaje.setText("Introduce el nombre del jugador al que quieras atacar");
             tfMensaje.setVisible(true);
             btnSeleccionar.setVisible(true);
-        }
 
+            btnJugar.setVisible(false);
+            btnDescartar.setVisible(false);
+            btnPasar.setVisible(false);
+        }
+        if (jugador.irabaziDu()){
+            System.out.println("has ganado");
+        }
     }
 
     @FXML
@@ -235,13 +247,23 @@ public class MainLeihoaKud implements Initializable {
 
     @FXML
     public void onClickSeleccionar(ActionEvent actionEvent) {
+
         Jokalaria jugador = listajugadores[turno-1];
         String objetivo = tfMensaje.getText();
 
         if (nombres.contains(objetivo)){
             //atacar
 
-            if (jugador.infektatuJokalaria((Birusa) this.cartaSeleccionada(),nombres.indexOf(objetivo))){
+            if (this.cartaSeleccionada() instanceof Tratamendua){
+                jugador.tratamentuaJolastu((Tratamendua)this.cartaSeleccionada(),listajugadores[nombres.indexOf(objetivo)]);
+                    actualizarMesa(objetivo);
+                    actualizarMesa(nombres.get(turno-1));
+                    cambiarTurno();
+                    lblMensaje.setVisible(false);
+                    tfMensaje.setVisible(false);
+                    tfMensaje.setText("");
+                    btnSeleccionar.setVisible(false);
+            }else if (jugador.infektatuJokalaria((Birusa) this.cartaSeleccionada(),nombres.indexOf(objetivo))){
                 //una vez usada la carta
                 actualizarMesa(objetivo);
                 cambiarTurno();
@@ -251,9 +273,18 @@ public class MainLeihoaKud implements Initializable {
                 btnSeleccionar.setVisible(false);
             }
 
+
         }else{
             //mostrar pantalla de errores, el jugador al que quiere atacar no existe
 
+        }
+        btnJugar.setVisible(true);
+        btnDescartar.setVisible(true);
+        btnPasar.setVisible(true);
+
+        if (jugador.irabaziDu()){
+            System.out.println("has terminado");
+            //mostrar ventana de mensajes
         }
     }
 
