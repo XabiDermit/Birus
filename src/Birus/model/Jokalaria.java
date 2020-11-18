@@ -122,7 +122,6 @@ public class Jokalaria {
 			return this.sartuBirusaMailan(pBi, jugadorPos);
 		}else if (!ListaJokalariak.getNireListaJokalariak(0).getLista()[jugadorPos].koloreBerdinekoOrganoDago(pBi)) {
 			//mostrar pantalla de mensaje --> el jugador al que atacamos no tiene ese organo
-			System.out.println("");
 			return false;
 		}else { //tiene un organo del mismo color que el birus que le quieres meter
 			return this.sartuBirusaMailan(pBi, jugadorPos);
@@ -217,10 +216,10 @@ public class Jokalaria {
 
 	}
 	
-	public void bilatuLekuaBotikarentzat(Botika pBo) {
+	public boolean bilatuLekuaBotikarentzat(Botika pBo) {
 		int i = 0;
 		boolean aurk =  false;
-		Karta k;
+		Karta k = null;
 		if (pBo.kolorea.equals("Guztiak")){
 			k = getCartaOptima(mahaia);
 			aurk=true;
@@ -228,12 +227,13 @@ public class Jokalaria {
 			while (i < 4 && !aurk) {
 				if (this.mahaia[i] != null && this.mahaia[i].kolorea.equals(pBo.kolorea)) {
 					aurk = true;
+					k = this.mahaia[i];
 				}
 				else {
 					i++;
 				}
 			}
-			k = this.mahaia[i];
+			
 		}
 		if (aurk) {
 			Organoak or = (Organoak)k;
@@ -261,9 +261,7 @@ public class Jokalaria {
 				this.eskua.kartaGehitu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
 			}
 		}
-		else {
-			System.out.println("Oraindik ez daukazu kolore horretako organorik zure mahaian!!");
-		}
+		return aurk;
 	}
 	
 	public Karta[] getMahaia() {

@@ -26,7 +26,6 @@ public class MezuLeihoaKud implements Initializable {
 
     //otros atributos
     private Main mainApp;
-    private ArrayList<String> nombres;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,10 +41,7 @@ public class MezuLeihoaKud implements Initializable {
 
     @FXML
     public void onClickOk(ActionEvent actionEvent) {
-        mainApp.mainErakutsi(nombres);
+        mainApp.esconderMezuLeihoa();
     }
 
-    public void setNombres(ArrayList<String> pNombres) {
-        nombres=pNombres;
-    }
 }

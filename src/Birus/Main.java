@@ -3,7 +3,6 @@ package Birus;
 import Birus.controller.HasieraLeihoaKud;
 import Birus.controller.MainLeihoaKud;
 import Birus.controller.MezuLeihoaKud;
-import Birus.model.Exekutagarria;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 public class Main extends Application {
 
     private Stage stage;
+    private Stage segundoStage;
 
     private Parent hasieraLeihoaUI;
     private Parent mainLeihoaUI;
@@ -29,13 +29,16 @@ public class Main extends Application {
     private Scene mainLeihoaScene;
     private Scene mezuLeihoaScene;
 
-    private ArrayList<String> nombres;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
         pantailakKargatu();
         stage.setTitle("Birus");
+
+        segundoStage = new Stage();
+        segundoStage.setTitle("Info.");
+
         hasieraLeihoaScene = new Scene(hasieraLeihoaUI);
         stage.setScene(hasieraLeihoaScene);
 
@@ -68,17 +71,20 @@ public class Main extends Application {
         stage.setScene(mainLeihoaScene);
         stage.show();
         mainLeihoaKud.empezarJuego(pNombres);
-        nombres=pNombres;
+
     }
 
     public void mezuLeihoaErakutsi(String pMensaje){
         if(mezuLeihoaScene==null){
-            mezuLeihoaScene = new Scene(mainLeihoaUI);
+            mezuLeihoaScene = new Scene(mezuLeihoaUI);
         }
-        stage.setScene(mezuLeihoaScene);
-        stage.show();
-        mezuLeihoaKud.setNombres(nombres);
+        segundoStage.setScene(mezuLeihoaScene);
+        segundoStage.show();
         mezuLeihoaKud.setMensaje(pMensaje);
+    }
+
+    public void esconderMezuLeihoa(){
+        segundoStage.hide();
     }
 
     public static void main(String[] args) {

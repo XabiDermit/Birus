@@ -206,9 +206,13 @@ public class MainLeihoaKud implements Initializable {
         }else if ("CURAR".equals(aux)){
             //el jugador tiene que elegir que organo quiere curar
             //en este metodo se "dejan las cosas preparadas" pero el metodo que hace la accion es el de onCLickSeleccionar()
-            jugador.bilatuLekuaBotikarentzat((Botika)carta);
-            actualizarMesa(nombres.get(turno-1));
-            cambiarTurno();
+            if (jugador.bilatuLekuaBotikarentzat((Botika)carta)){
+                actualizarMesa(nombres.get(turno-1));
+                cambiarTurno();
+            }else{
+                mainApp.mezuLeihoaErakutsi("No tienes ningun organo de este color!");
+            }
+
 
         }else{
             //el jugador tiene que elegir a que otro jugador le "ataca"
@@ -271,11 +275,20 @@ public class MainLeihoaKud implements Initializable {
                 tfMensaje.setText("");
                 btnSeleccionar.setVisible(false);
             }
+            mainApp.mezuLeihoaErakutsi("No puedes utilizar esa carta!");
+            lblMensaje.setVisible(false);
+            tfMensaje.setVisible(false);
+            tfMensaje.setText("");
+            btnSeleccionar.setVisible(false);
 
 
         }else{
             //mostrar pantalla de errores, el jugador al que quiere atacar no existe
             mainApp.mezuLeihoaErakutsi("El jugador al que quieres atacar no existe!");
+            lblMensaje.setVisible(false);
+            tfMensaje.setVisible(false);
+            tfMensaje.setText("");
+            btnSeleccionar.setVisible(false);
 
         }
         btnJugar.setVisible(true);
