@@ -24,7 +24,7 @@ public class ListaJokalariak {
 	public void kartakBanatu(ListaKartak pMazoa) {
 		for(int j=0;j<this.jKop;j++) {
 			for (int i=0;i<3;i++) {
-				this.lista[j].kartaHartu(Tableroa.getNiretableroa().getMazoa().kartaKendu(0));
+				this.lista[j].kartaHartu(Tableroa.getNiretableroa().getMazoa().repartirCarta());
 			}
 		}
 	}

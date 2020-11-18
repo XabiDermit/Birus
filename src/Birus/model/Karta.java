@@ -1,10 +1,14 @@
 package Birus.model;
 
+import javafx.scene.image.Image;
+
 public abstract class Karta {
 	protected String kolorea;
+	private Image karta;
 
-	public Karta(String pKolorea) {
+	public Karta(String pKolorea, Image pKarta) {
 		this.kolorea=pKolorea;
+		this.karta = pKarta;
 	}
 	protected void inprimatu() {}
 	
@@ -14,5 +18,17 @@ public abstract class Karta {
 			emaitza=true;
 		}
 		return emaitza;
+	}
+
+	public Image getKarta() {
+		return karta;
+	}
+
+	public void setCarta(Image pCarta){
+		karta = pCarta;
+	}
+
+	public String getKolorea(){
+		return kolorea;
 	}
 }

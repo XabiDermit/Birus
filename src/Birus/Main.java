@@ -2,6 +2,7 @@ package Birus;
 
 import Birus.controller.HasieraLeihoaKud;
 import Birus.controller.MainLeihoaKud;
+import Birus.controller.MezuLeihoaKud;
 import Birus.model.Exekutagarria;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +19,17 @@ public class Main extends Application {
 
     private Parent hasieraLeihoaUI;
     private Parent mainLeihoaUI;
+    private Parent mezuLeihoaUI;
 
     private HasieraLeihoaKud hasieraLeihoaKud;
     private MainLeihoaKud mainLeihoaKud;
+    private MezuLeihoaKud mezuLeihoaKud;
 
     private Scene hasieraLeihoaScene;
     private Scene mainLeihoaScene;
+    private Scene mezuLeihoaScene;
+
+    private ArrayList<String> nombres;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -48,6 +54,11 @@ public class Main extends Application {
         mainLeihoaKud = loaderMainLeihoa.getController();
         mainLeihoaKud.setMainApp(this);
 
+        FXMLLoader loaderMezuLeihoa = new FXMLLoader(getClass().getResource("/Birus/ui/mezuLeihoa.fxml"));
+        mezuLeihoaUI = (Parent) loaderMezuLeihoa.load();
+        mezuLeihoaKud = loaderMezuLeihoa.getController();
+        mezuLeihoaKud.setMainApp(this);
+
     }
 
     public void mainErakutsi(ArrayList<String> pNombres){
@@ -56,9 +67,18 @@ public class Main extends Application {
         }
         stage.setScene(mainLeihoaScene);
         stage.show();
-        mainLeihoaKud.setPestañas(pNombres);
-        Exekutagarria.getNireExekutagarria().jugar(pNombres);
+        mainLeihoaKud.empezarJuego(pNombres);
+        nombres=pNombres;
+    }
 
+    public void mezuLeihoaErakutsi(String pMensaje){
+        if(mezuLeihoaScene==null){
+            mezuLeihoaScene = new Scene(mainLeihoaUI);
+        }
+        stage.setScene(mezuLeihoaScene);
+        stage.show();
+        mezuLeihoaKud.setNombres(nombres);
+        mezuLeihoaKud.setMensaje(pMensaje);
     }
 
     public static void main(String[] args) {

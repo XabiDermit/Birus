@@ -12,7 +12,7 @@ public class Exekutagarria {
 		Tableroa.getNiretableroa().kartakBanatu();
 		int j=0;
 		while(!amaitu) {
-			ListaJokalariak.getNireListaJokalariak(0).getLista()[j].jokatu();
+			//ListaJokalariak.getNireListaJokalariak(0).getLista()[j].jokatu();
 			if (ListaJokalariak.getNireListaJokalariak(0).getLista()[j].irabaziDu()) {
 				amaitu=true;
 			} else {
